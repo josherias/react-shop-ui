@@ -1,7 +1,20 @@
+import { Route, Switch } from "react-router";
+import Footer from "./components/Footer/Footer";
+import Navbar from "./components/NavBar/Navbar";
+import Categories from "./pages/Categories";
+import Home from "./pages/Home";
+import Products from "./pages/Products";
+
 function App() {
   return (
-    <div className="App">
-      <h1>Starter template</h1>
+    <div>
+      <Navbar />
+      <Switch>
+        <Route path="/categories" component={Categories} />
+        <Route path="/products" component={Products} />
+        <Route exact path="/" component={Home} />
+      </Switch>
+      <Footer />
     </div>
   );
 }
