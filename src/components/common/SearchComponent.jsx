@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import { device } from "../../responsive";
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,6 +12,11 @@ const Wrapper = styled.div`
   cursor: pointer;
   padding: 8px;
   flex: 1;
+  width: 80%;
+
+  @media ${device.mobile} {
+    width: 100%;
+  }
 `;
 
 const SearchInput = styled.input`

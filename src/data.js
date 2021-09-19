@@ -168,3 +168,31 @@ export const adds = [
 export const singleAdd = {
   img: `${addsImgSrc}single-add.jpg`,
 };
+
+export const cart = [
+  {
+    id: 1,
+    title: "American Orange fruit",
+    img: `${pdtImgSrc}img-1.jpg`,
+    price: 260,
+    discountPrice: 200,
+    featured: true,
+  },
+
+  {
+    id: 2,
+    title: "American Orange fruit",
+    img: `${pdtImgSrc}img-2.jpg`,
+    price: 260,
+    discountPrice: 200,
+    featured: true,
+  },
+  {
+    id: 3,
+    title: "American Orange fruit",
+    img: `${pdtImgSrc}img-3.jpg`,
+    price: 260,
+    discountPrice: 200,
+    featured: true,
+  },
+];
