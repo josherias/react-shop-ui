@@ -4,14 +4,22 @@ import styled from "styled-components";
 import CartItem from "../components/Cart/CartItem";
 import CheckOutsection from "../components/Cart/CheckOutsection";
 import { cart } from "../data";
+import { device } from "../responsive";
 
 const Container = styled.div`
   width: 100%;
-  padding: 20px 80px; ;
+  padding: 20px 80px;
+
+  @media ${device.tablet} {
+    padding: 20px 40px;
+  }
+
+  @media ${device.mobile} {
+    padding: 20px 10px;
+  }
 `;
 
 const Wrapper = styled.div`
-  background-color: #fff;
   width: 100%;
 `;
 
@@ -20,6 +28,11 @@ const TopSection = styled.div`
   padding: 10px;
   display: flex;
   flex-direction: column;
+  background-color: #fff;
+
+  @media ${device.mobile} {
+    flex-direction: column;
+  }
 `;
 
 const Row1 = styled.div`
@@ -29,6 +42,10 @@ const Row1 = styled.div`
   font-weight: 600;
   margin: 10px 0px;
   text-transform: uppercase;
+
+  @media ${device.mobile} {
+    font-size: 18px;
+  }
 `;
 const Row2 = styled.div`
   width: 100%;
@@ -36,6 +53,10 @@ const Row2 = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 5px 0px;
+
+  @media ${device.mobile} {
+    flex-direction: column;
+  }
 `;
 
 const Button = styled.button`
@@ -52,11 +73,19 @@ const Button = styled.button`
     background-color: #d34f26;
     color: #fff;
   }
+
+  @media ${device.mobile} {
+    display: none;
+  }
 `;
 
 const CartCount = styled.div`
   font-size: 18px;
   margin: 5px 0px;
+
+  @media ${device.mobile} {
+    font-size: 15px;
+  }
 `;
 
 const CheckOutButton = styled.button`
@@ -72,11 +101,15 @@ const CheckOutButton = styled.button`
   &:hover {
     background-color: #d34f26;
   }
+
+  @media ${device.mobile} {
+    display: none;
+  }
 `;
 
 const CartSection = styled.div`
   width: 100%;
-  margin: 10px 0px;
+  margin: 0px 0px;
   padding: 10px;
 `;
 
@@ -93,17 +126,13 @@ function Cart() {
           </Row2>
         </TopSection>
         <CartSection>
-          <Grid
-            container
-            spacing={{ xs: 1, md: 1 }}
-            columns={{ xs: 4, sm: 8, md: 12 }}
-          >
-            <Grid item xs={12} md={9}>
+          <Grid container spacing={{ xs: 1, md: 4 }}>
+            <Grid item xs={12} sm={8} md={8}>
               {cart.map((item) => (
                 <CartItem img={item.img} title={item.title} key={item.id} />
               ))}
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid item xs={12} sm={4} md={4}>
               <CheckOutsection />
             </Grid>
           </Grid>

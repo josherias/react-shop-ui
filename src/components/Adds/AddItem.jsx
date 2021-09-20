@@ -3,12 +3,10 @@ import styled from "styled-components";
 import { device } from "../../responsive";
 
 const Wrapper = styled.div`
-  margin: 8px;
-  flex: 1;
-  @media ${device.tablet} {
+  /* @media ${device.tablet} {
     flex: unset;
     width: 100%;
-  }
+  } */
 `;
 const Img = styled.img`
   width: 100%;

@@ -134,12 +134,7 @@ function Navbar() {
 
         <NavItem>
           <NavBarLink>
-            <NavItemLink to="/register">Register</NavItemLink>
-          </NavBarLink>
-        </NavItem>
-        <NavItem>
-          <NavBarLink>
-            <NavItemLink to="/sign-in">Sign In</NavItemLink>
+            <NavItemLink to="/account/login">Sign In</NavItemLink>
           </NavBarLink>
         </NavItem>
         <NavItem>

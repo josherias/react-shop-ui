@@ -4,7 +4,7 @@ import FooterRow1 from "./FooterRow1";
 import FooterRow2 from "./FooterRow2";
 
 const Container = styled.div`
-  margin-top: 80px;
+  margin-top: 60px;
 `;
 
 function Footer() {
