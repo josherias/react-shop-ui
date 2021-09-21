@@ -1,5 +1,6 @@
 import { AddShoppingCart, FavoriteBorder } from "@material-ui/icons";
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { device } from "../../responsive";
 
@@ -119,28 +120,30 @@ const CartIcon = styled.span`
   }
 `;
 
-function ProductItem({ img, title }) {
+function ProductItem({ img, title, id }) {
   return (
-    <Wrapper>
-      <ImgContainer>
-        <Img src={img} />
-      </ImgContainer>
-      <Details>
-        <StockLabel>Available (In Stock)</StockLabel>
-        <Title>{title}</Title>
-        <PriceGroup>
-          <NewPrice>$10</NewPrice>
-          <OldPrice>$15</OldPrice>
-        </PriceGroup>
-      </Details>
-      <OfferLabel>6% OFF</OfferLabel>
-      <WishListIcon>
-        <FavoriteBorder />
-      </WishListIcon>
-      <CartIcon>
-        <AddShoppingCart />
-      </CartIcon>
-    </Wrapper>
+    <Link to={"/product/" + id} style={{ textDecoration: "none" }}>
+      <Wrapper>
+        <ImgContainer>
+          <Img src={img} />
+        </ImgContainer>
+        <Details>
+          <StockLabel>Available (In Stock)</StockLabel>
+          <Title>{title}</Title>
+          <PriceGroup>
+            <NewPrice>$10</NewPrice>
+            <OldPrice>$15</OldPrice>
+          </PriceGroup>
+        </Details>
+        <OfferLabel>6% OFF</OfferLabel>
+        <WishListIcon>
+          <FavoriteBorder />
+        </WishListIcon>
+        <CartIcon>
+          <AddShoppingCart />
+        </CartIcon>
+      </Wrapper>
+    </Link>
   );
 }
 

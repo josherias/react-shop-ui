@@ -75,6 +75,7 @@ function ProductSlider() {
             key={product.id}
             img={product.img}
             title={product.title}
+            id={product.id}
           />
         ))}
       </SliderComponent>

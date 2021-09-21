@@ -4,7 +4,7 @@ import { device } from "../../responsive";
 import MenuOutlinedIcon from "@material-ui/icons/MenuOutlined";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import { Badge } from "@material-ui/core";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: flex;
@@ -115,7 +115,9 @@ function Navbar() {
   return (
     <Wrapper>
       <Left>
-        <Logo>E-store</Logo>
+        <Link to="/" style={{ textDecoration: "none", color: "#000" }}>
+          <Logo>E-store</Logo>
+        </Link>
       </Left>
       <Right toggle={toggle}>
         <Center>

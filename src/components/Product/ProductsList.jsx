@@ -64,7 +64,11 @@ function ProductsList() {
           >
             {products.map((product) => (
               <Grid item xs={2} sm={4} md={4} key={product.id}>
-                <ProductItem img={product.img} title={product.title} />
+                <ProductItem
+                  img={product.img}
+                  title={product.title}
+                  id={product.id}
+                />
               </Grid>
             ))}
           </Grid>

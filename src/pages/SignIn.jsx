@@ -16,8 +16,7 @@ const Container = styled.div`
 
   @media ${device.mobile} {
     padding: 20px 10px;
-    margin-top: 25px;
-    height: 80vh;
+    height: 60vh;
   }
 `;
 
@@ -26,6 +25,10 @@ const Wrapper = styled.div`
   background-color: #fff;
   padding: 20px 20px;
   text-align: center;
+
+  @media ${device.mobile} {
+    margin-top: 50px;
+  }
 `;
 
 const Heading = styled.div`
@@ -71,7 +74,11 @@ function SignIn() {
     <Container>
       <Wrapper>
         <Heading>Sign In to Your Gambo Account</Heading>
-        <Form>
+        <Form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
           <Box component="form" sx={{ display: "flex", flexWrap: "wrap" }}>
             <FormControl fullWidth sx={{ m: 1 }}>
               <TextField id="email" label="Email" variant="standard" />

@@ -69,6 +69,14 @@ export const products = [
   },
 ];
 
+export function getProducts() {
+  return products;
+}
+
+export function getProduct(id) {
+  return products.find((p) => p.id === id);
+}
+
 const categoryImgSrc = "assets/img/category/";
 
 export const categories = [
