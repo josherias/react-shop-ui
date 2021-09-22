@@ -1,8 +1,8 @@
-import React from "react";
 import styled from "styled-components";
 import AddItem from "./AddItem";
-import { adds } from "../../data";
 import { Grid } from "@mui/material";
+import { ProductContext } from "../../context";
+import { useContext } from "react";
 
 const Container = styled.div`
   margin: 50px 0;
@@ -11,6 +11,8 @@ const Container = styled.div`
 `;
 
 function Adds() {
+  const context = useContext(ProductContext);
+  const { adds } = context;
   return (
     <Container>
       <Grid container spacing={{ xs: 1, md: 2 }}>

@@ -1,10 +1,10 @@
-import React from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { Box } from "@mui/system";
 import { Grid } from "@mui/material";
-import image from "../images/img-4.jpg";
 import { StarOutline } from "@material-ui/icons";
 import { device } from "../responsive";
+import { ProductContext } from "../context";
 
 const Container = styled.div`
   padding: 10px 80px;
@@ -27,6 +27,7 @@ const Wrapper = styled.div`
 
 const ImgContainer = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,6 +105,10 @@ const CartBtn = styled.button`
 `;
 
 function Product() {
+  const context = useContext(ProductContext);
+
+  const { title, img, price, discountPrice } = context.singleProduct;
+
   return (
     <Container>
       <Wrapper>
@@ -111,16 +116,16 @@ function Product() {
           <Grid container spacing={{ xs: 1 }}>
             <Grid item xs={12} sm={5} md={5}>
               <ImgContainer>
-                <Img src={image} />
+                <Img src={process.env.PUBLIC_URL + "/" + img} alt="img" />
               </ImgContainer>
             </Grid>
             <Grid item xs={12} sm={7} md={7}>
               <Right>
-                <Title>Title of the product</Title>
+                <Title>{title}</Title>
                 <Category>Category</Category>
-                <NewPrice>Price : $&nbsp;230</NewPrice>
+                <NewPrice>Price : $&nbsp;{price}</NewPrice>
                 <OldPrice>
-                  Old Price :$&nbsp; <Discount>230</Discount>
+                  Old Price :$&nbsp; <Discount>{discountPrice}</Discount>
                 </OldPrice>
                 <Rating>
                   <StarOutline />

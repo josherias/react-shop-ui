@@ -1,9 +1,9 @@
-import React from "react";
 import SliderComponent from "../common/Slider";
 import CategoryItem from "./CategoryItem";
-import { categories } from "../../data";
 import styled from "styled-components";
 import { device } from "../../responsive";
+import { ProductContext } from "../../context";
+import { useContext } from "react";
 
 const Title = styled.h3`
   font-size: 20px;
@@ -17,6 +17,9 @@ const Title = styled.h3`
 `;
 
 function CategorySlider() {
+  const context = useContext(ProductContext);
+  const { categories } = context;
+
   const settings = {
     dots: false,
     infinite: true,

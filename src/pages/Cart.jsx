@@ -3,8 +3,9 @@ import React from "react";
 import styled from "styled-components";
 import CartItem from "../components/Cart/CartItem";
 import CheckOutsection from "../components/Cart/CheckOutsection";
-import { cart } from "../data";
 import { device } from "../responsive";
+import { ProductContext } from "../context";
+import { useContext } from "react";
 
 const Container = styled.div`
   width: 100%;
@@ -114,6 +115,8 @@ const CartSection = styled.div`
 `;
 
 function Cart() {
+  const context = useContext(ProductContext);
+  const { cart } = context;
   return (
     <Container>
       <Wrapper>
@@ -129,7 +132,13 @@ function Cart() {
           <Grid container spacing={{ xs: 1, md: 4 }}>
             <Grid item xs={12} sm={8} md={8}>
               {cart.map((item) => (
-                <CartItem img={item.img} title={item.title} key={item.id} />
+                <CartItem
+                  img={item.img}
+                  title={item.title}
+                  key={item.id}
+                  price={item.price}
+                  oldPrice={item.oldPrice}
+                />
               ))}
             </Grid>
             <Grid item xs={12} sm={4} md={4}>

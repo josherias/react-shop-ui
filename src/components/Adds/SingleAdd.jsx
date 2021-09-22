@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { singleAdd } from "../../data";
+
+import { ProductContext } from "../../context";
+import { useContext } from "react";
 
 const Container = styled.div`
   width: 100%;
@@ -12,6 +14,8 @@ const Img = styled.img`
 `;
 
 function SingleAdd() {
+  const context = useContext(ProductContext);
+  const { singleAdd } = context;
   return (
     <Container>
       <Img src={singleAdd.img} />

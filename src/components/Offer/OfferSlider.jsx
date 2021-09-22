@@ -1,9 +1,12 @@
-import React from "react";
-import { offers } from "../../data";
 import OfferItem from "./OfferItem";
 import SliderComponent from "../common/Slider";
+import { ProductContext } from "../../context";
+import { useContext } from "react";
 
 function OfferSlider() {
+  const offerContext = useContext(ProductContext);
+  const { offers } = offerContext;
+
   const settings = {
     className: "center",
     centerMode: true,

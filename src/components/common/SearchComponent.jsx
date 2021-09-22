@@ -32,13 +32,19 @@ const SearchInput = styled.input`
 
 const Icon = styled.div``;
 
-function SearchComponent() {
+function SearchComponent({ value, onChange }) {
   return (
     <Wrapper>
       <Icon>
         <SearchOutlinedIcon />
       </Icon>
-      <SearchInput type="text" placeholder="Search Products Here" />
+      <SearchInput
+        type="text"
+        placeholder="Search Here ...."
+        name="query"
+        value={value}
+        onChange={(e) => onChange(e.currentTarget.value)}
+      />
     </Wrapper>
   );
 }

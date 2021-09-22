@@ -1,9 +1,9 @@
-import React from "react";
-import { products } from "../../data";
 import styled from "styled-components";
 import { device } from "../../responsive";
 import SliderComponent from "../common/Slider";
 import ProductItem from "./ProductItem";
+import { ProductContext } from "../../context";
+import { useContext } from "react";
 
 const Title = styled.h3`
   font-size: 20px;
@@ -17,6 +17,8 @@ const Title = styled.h3`
 `;
 
 function PopularProducts() {
+  const context = useContext(ProductContext);
+  const { products } = context;
   const settings = {
     dots: false,
     infinite: true,
@@ -76,6 +78,8 @@ function PopularProducts() {
             img={product.img}
             title={product.title}
             id={product.id}
+            price={product.price}
+            oldPrice={product.oldPrice}
           />
         ))}
       </SliderComponent>

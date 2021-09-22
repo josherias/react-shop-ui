@@ -1,8 +1,9 @@
 import { AddShoppingCart, FavoriteBorder } from "@material-ui/icons";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { device } from "../../responsive";
+import { ProductContext } from "../../context";
 
 const Img = styled.img`
   width: 70%;
@@ -74,6 +75,7 @@ const NewPrice = styled.span`
 const OldPrice = styled.span`
   color: #5c5b5a;
   font-weight: bold;
+  text-decoration: line-through;
 `;
 
 const OfferLabel = styled.span`
@@ -120,9 +122,17 @@ const CartIcon = styled.span`
   }
 `;
 
-function ProductItem({ img, title, id }) {
+function ProductItem({ img, title, id, price, oldPrice }) {
+  const context = useContext(ProductContext);
+
+  const { handleDetail } = context;
+
   return (
-    <Link to={"/product/" + id} style={{ textDecoration: "none" }}>
+    <Link
+      to={"/product/" + title}
+      style={{ textDecoration: "none" }}
+      onClick={() => handleDetail(id)}
+    >
       <Wrapper>
         <ImgContainer>
           <Img src={img} />
@@ -131,8 +141,8 @@ function ProductItem({ img, title, id }) {
           <StockLabel>Available (In Stock)</StockLabel>
           <Title>{title}</Title>
           <PriceGroup>
-            <NewPrice>$10</NewPrice>
-            <OldPrice>$15</OldPrice>
+            <NewPrice>${price}</NewPrice>
+            <OldPrice>${oldPrice}</OldPrice>
           </PriceGroup>
         </Details>
         <OfferLabel>6% OFF</OfferLabel>

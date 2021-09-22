@@ -1,13 +1,15 @@
-import React from "react";
 import styled from "styled-components";
 import SortComponent from "../common/SortComponent";
-import { products } from "../../data";
 import ProductItem from "./ProductItem";
 import SearchComponent from "../common/SearchComponent";
+import { ProductContext } from "../../context";
+import { useContext } from "react";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import PaginationComponent from "../common/PaginationComponent";
+import Loading from "../common/Loading";
+import { products } from "../../data";
 
 const Wrapper = styled.div`
   background-color: #fff;
@@ -44,6 +46,9 @@ const List = styled.div`
 `;
 
 function ProductsList() {
+  const context = useContext(ProductContext);
+  const { loading, productsData, searchQuery, handleSearch } = context;
+
   return (
     <Wrapper>
       <TopSection>
@@ -53,7 +58,7 @@ function ProductsList() {
         </SortWrapper>
       </TopSection>
       <SecondSection>
-        <SearchComponent />
+        <SearchComponent value={searchQuery} onChange={handleSearch} />
       </SecondSection>
       <List>
         <Box sx={{ flexGrow: 1 }}>
@@ -62,15 +67,21 @@ function ProductsList() {
             spacing={{ xs: 0, md: 0 }}
             columns={{ xs: 1, sm: 8, md: 12 }}
           >
-            {products.map((product) => (
-              <Grid item xs={2} sm={4} md={4} key={product.id}>
-                <ProductItem
-                  img={product.img}
-                  title={product.title}
-                  id={product.id}
-                />
-              </Grid>
-            ))}
+            {loading ? (
+              <Loading />
+            ) : (
+              productsData.map((product) => (
+                <Grid item xs={2} sm={4} md={4} key={product.id}>
+                  <ProductItem
+                    img={product.img}
+                    title={product.title}
+                    id={product.id}
+                    price={product.price}
+                    oldPrice={product.oldPrice}
+                  />
+                </Grid>
+              ))
+            )}
           </Grid>
         </Box>
       </List>

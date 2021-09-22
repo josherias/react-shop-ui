@@ -91,7 +91,7 @@ const QtyLabel = styled.span`
   margin: 0px 3px;
 `;
 
-function CartItem({ img, title }) {
+function CartItem({ img, title, price, oldPrice }) {
   return (
     <Wrapper>
       <Grid container spacing={{ xs: 1, md: 1 }}>
@@ -101,8 +101,8 @@ function CartItem({ img, title }) {
         <Grid item xs={12} sm={8} md={8}>
           <Details>
             <Title>{title}</Title>
-            <NewPrice>$1000000</NewPrice>
-            <OldPrice>$20000000</OldPrice>
+            <NewPrice>${price}</NewPrice>
+            <OldPrice>${oldPrice}</OldPrice>
             <QuantityBtns>
               <QtyButton>+</QtyButton>
               <QtyLabel>1</QtyLabel>

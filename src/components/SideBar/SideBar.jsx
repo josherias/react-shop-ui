@@ -1,7 +1,8 @@
-import React from "react";
 import styled from "styled-components";
 import { device } from "../../responsive";
 import SliderInput from "../common/SliderInput";
+import { ProductContext } from "../../context";
+import { useContext } from "react";
 
 const Wrapper = styled.div`
   background-color: #fff;
@@ -9,7 +10,7 @@ const Wrapper = styled.div`
     rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
   flex: 1;
   margin-right: 15px;
-  height: 370px;
+  max-height: 450px;
 
   @media ${device.mobile} {
     margin-right: 0px;
@@ -47,16 +48,15 @@ const Slider = styled.div`
 `;
 
 function SideBar() {
+  const context = useContext(ProductContext);
+  const { categories } = context;
   return (
     <Wrapper>
       <Section>
         <Heading>Category</Heading>
-        <SectionItem>Vegatable</SectionItem>
-        <SectionItem>Vegatable</SectionItem>
-        <SectionItem>Vegatable</SectionItem>
-        <SectionItem>Vegatable</SectionItem>
-        <SectionItem>Vegatable</SectionItem>
-        <SectionItem>Vegatable</SectionItem>
+        {categories.map((category) => (
+          <SectionItem>{category.title}</SectionItem>
+        ))}
       </Section>
       <Section>
         <Heading>Price</Heading>
