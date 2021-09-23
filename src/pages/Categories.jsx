@@ -54,7 +54,9 @@ const CategoryList = styled.div`
 
 function Categories() {
   const context = useContext(ProductContext);
-  const { categories, loading } = context;
+  const { categories: categoriesData, loading } = context;
+
+  const categories = categoriesData.filter((c) => c.id);
   return (
     <Container>
       <Wrapper>

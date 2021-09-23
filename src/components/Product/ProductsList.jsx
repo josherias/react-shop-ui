@@ -2,14 +2,11 @@ import styled from "styled-components";
 import SortComponent from "../common/SortComponent";
 import ProductItem from "./ProductItem";
 import SearchComponent from "../common/SearchComponent";
-import { ProductContext } from "../../context";
-import { useContext } from "react";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import PaginationComponent from "../common/PaginationComponent";
 import Loading from "../common/Loading";
-import { products } from "../../data";
 
 const Wrapper = styled.div`
   background-color: #fff;
@@ -45,10 +42,7 @@ const List = styled.div`
   padding: 10px 0px;
 `;
 
-function ProductsList() {
-  const context = useContext(ProductContext);
-  const { loading, productsData, searchQuery, handleSearch } = context;
-
+function ProductsList({ loading, productsData, searchQuery, handleSearch }) {
   return (
     <Wrapper>
       <TopSection>

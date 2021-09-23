@@ -22,15 +22,28 @@ class ProductProvider extends Component {
     singleAdd: {},
     loading: true,
     searchQuery: "",
+    selectedCategory: null,
+    priceValue: 0,
+    minPrice: 0,
+    maxPrice: 0,
   };
 
   componentDidMount() {
     const products = getProducts();
-    const categories = getCategories();
+    const categoriesData = getCategories();
+
+    const categories = [
+      { id: "", key: 0, title: "All Categories" },
+      ...categoriesData,
+    ];
+
     const offers = getOffers();
     const cart = getCart();
     const adds = getAdds();
     const add = { ...singleAdd };
+
+    let maxPrice = Math.max(...products.map((p) => p.price));
+    let minPrice = Math.min(...products.map((p) => p.price));
 
     this.setState({
       products,
@@ -39,6 +52,8 @@ class ProductProvider extends Component {
       cart,
       adds,
       singleAdd: add,
+      maxPrice,
+      priceValue: [minPrice, maxPrice],
     });
 
     this.setState({ loading: false });
@@ -57,18 +72,42 @@ class ProductProvider extends Component {
   };
 
   handleSearch = (query) => {
-    this.setState({ searchQuery: query });
+    this.setState({ searchQuery: query, selectedCategory: null });
+  };
+
+  handleCategorySelect = (category) => {
+    this.setState({ selectedCategory: category });
+    console.log(category);
+  };
+
+  handlePriceChange = (e, data) => {
+    this.setState({ priceValue: data, selectedCategory: null });
+    console.log(data);
   };
 
   getProductsData = () => {
-    const { products: allProducts, searchQuery } = this.state;
+    const {
+      products: allProducts,
+      searchQuery,
+      selectedCategory,
+      priceValue,
+    } = this.state;
     let filtered = allProducts;
 
     if (searchQuery) {
       filtered = allProducts.filter((p) =>
         p.title.toLowerCase().startsWith(searchQuery.toLowerCase())
       );
+    } else if (selectedCategory && selectedCategory.id) {
+      filtered = allProducts.filter(
+        (p) => p.category_id === selectedCategory.id
+      );
+    } else if (priceValue) {
+      filtered = allProducts.filter(
+        (p) => p.price >= priceValue[0] && p.price <= priceValue[1]
+      );
     }
+
     return { filtered };
   };
 
@@ -81,6 +120,8 @@ class ProductProvider extends Component {
           handleDetail: this.handleDetail,
           productsData: filtered,
           handleSearch: this.handleSearch,
+          onCategorySelect: this.handleCategorySelect,
+          onPriceChange: this.handlePriceChange,
         }}
       >
         {this.props.children}

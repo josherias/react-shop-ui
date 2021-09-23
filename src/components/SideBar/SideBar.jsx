@@ -47,7 +47,14 @@ const Slider = styled.div`
   padding: 8px 35px;
 `;
 
-function SideBar() {
+function SideBar({
+  onItemSelect,
+  selectedItem,
+  priceValue,
+  onPriceChange,
+  minPrice,
+  maxPrice,
+}) {
   const context = useContext(ProductContext);
   const { categories } = context;
   return (
@@ -55,13 +62,23 @@ function SideBar() {
       <Section>
         <Heading>Category</Heading>
         {categories.map((category) => (
-          <SectionItem>{category.title}</SectionItem>
+          <SectionItem
+            key={category.id || category.key}
+            onClick={() => onItemSelect(category)}
+          >
+            {category.title}
+          </SectionItem>
         ))}
       </Section>
       <Section>
         <Heading>Price</Heading>
         <Slider>
-          <SliderInput />
+          <SliderInput
+            value={priceValue}
+            onPriceChange={onPriceChange}
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+          />
         </Slider>
       </Section>
     </Wrapper>

@@ -8,6 +8,7 @@ export const detailProduct = {
   oldPrice: 99,
   featured: true,
   description: "",
+  category: 1,
 };
 
 export const products = [
@@ -19,6 +20,7 @@ export const products = [
     oldPrice: 99,
     featured: true,
     description: "",
+    category_id: 1,
   },
 
   {
@@ -29,6 +31,7 @@ export const products = [
     oldPrice: 50,
     featured: true,
     description: "",
+    category_id: 4,
   },
   {
     id: 3,
@@ -38,6 +41,7 @@ export const products = [
     oldPrice: 16,
     featured: true,
     description: "",
+    category_id: 8,
   },
 
   {
@@ -48,6 +52,7 @@ export const products = [
     oldPrice: 10,
     featured: true,
     description: "",
+    category_id: 2,
   },
   {
     id: 5,
@@ -57,6 +62,7 @@ export const products = [
     oldPrice: 10,
     featured: true,
     description: "",
+    category_id: 1,
   },
   {
     id: 6,
@@ -66,6 +72,7 @@ export const products = [
     oldPrice: 70,
     featured: true,
     description: "",
+    category_id: 3,
   },
   {
     id: 7,
@@ -75,6 +82,7 @@ export const products = [
     oldPrice: 36,
     featured: true,
     description: "",
+    category_id: 4,
   },
   {
     id: 8,
@@ -84,6 +92,7 @@ export const products = [
     oldPrice: 30,
     featured: true,
     description: "",
+    category_id: 3,
   },
 ];
 
@@ -224,6 +233,7 @@ const cart = [
     oldPrice: 99,
     featured: true,
     description: "",
+    category_id: 1,
   },
 
   {
@@ -234,6 +244,7 @@ const cart = [
     oldPrice: 50,
     featured: true,
     description: "",
+    category_id: 1,
   },
   {
     id: 3,
@@ -243,6 +254,7 @@ const cart = [
     oldPrice: 16,
     featured: true,
     description: "",
+    category: 1,
   },
 ];
 

@@ -9,17 +9,13 @@ const useStyles = makeStyles({
   },
 });
 
-function valuetext(value) {
-  return `${value}`;
-}
-
-export default function SliderInput() {
+export default function SliderInput({
+  value,
+  onPriceChange,
+  minPrice,
+  maxPrice,
+}) {
   const classes = useStyles();
-  const [value, setValue] = React.useState([20, 37]);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   return (
     <div className={classes.root}>
@@ -28,14 +24,16 @@ export default function SliderInput() {
         style={{ fontSize: "13px", color: "#302f2f" }}
         gutterBottom
       >
-        Slide to select range
+        Slide to select price range
       </Typography>
       <Slider
+        id="price"
         value={value}
-        onChange={handleChange}
+        // min={minPrice}
+        // max={maxPrice}
+        onChange={onPriceChange}
         valueLabelDisplay="auto"
         aria-labelledby="range-slider"
-        getAriaValueText={valuetext}
       />
     </div>
   );

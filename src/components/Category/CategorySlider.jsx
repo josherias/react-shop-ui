@@ -18,7 +18,9 @@ const Title = styled.h3`
 
 function CategorySlider() {
   const context = useContext(ProductContext);
-  const { categories } = context;
+  const { categories: categoriesData } = context;
+
+  const categories = categoriesData.filter((c) => c.id);
 
   const settings = {
     dots: false,
