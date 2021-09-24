@@ -5,14 +5,12 @@ import SearchComponent from "../common/SearchComponent";
 
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import PaginationComponent from "../common/PaginationComponent";
 import Loading from "../common/Loading";
 
 const Wrapper = styled.div`
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
     rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-  flex: 3;
 `;
 
 const TopSection = styled.div`
@@ -79,7 +77,6 @@ function ProductsList({ loading, productsData, searchQuery, handleSearch }) {
           </Grid>
         </Box>
       </List>
-      <PaginationComponent />
     </Wrapper>
   );
 }

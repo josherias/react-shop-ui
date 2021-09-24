@@ -3,23 +3,30 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import styled from "styled-components";
 
-export default function PaginationComponent() {
-  const [page, setPage] = React.useState(1);
-  const handleChange = (event, value) => {
-    setPage(value);
-  };
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0px;
+`;
 
-  const Wrapper = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 0px;
-  `;
+export default function PaginationComponent({
+  onPageChange,
+  pageSize,
+  currentPage,
+  itemsCount,
+}) {
+  const pageCount = Math.ceil(itemsCount / pageSize);
 
+  if (pageCount === 1) return null;
   return (
     <Wrapper>
       <Stack spacing={2}>
-        <Pagination count={4} page={page} onChange={handleChange} />
+        <Pagination
+          count={pageCount}
+          page={currentPage}
+          onChange={onPageChange}
+        />
       </Stack>
     </Wrapper>
   );

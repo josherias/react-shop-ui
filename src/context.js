@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { paginate } from "./utils/paginate";
 import {
   getProducts,
   getCategories,
@@ -26,6 +27,8 @@ class ProductProvider extends Component {
     priceValue: 0,
     minPrice: 0,
     maxPrice: 0,
+    currentPage: 1,
+    pageSize: 4,
   };
 
   componentDidMount() {
@@ -76,13 +79,17 @@ class ProductProvider extends Component {
   };
 
   handleCategorySelect = (category) => {
-    this.setState({ selectedCategory: category });
+    this.setState({ selectedCategory: category, currentPage: 1 });
     console.log(category);
   };
 
   handlePriceChange = (e, data) => {
-    this.setState({ priceValue: data, selectedCategory: null });
+    this.setState({ priceValue: data, selectedCategory: null, currentPage: 1 });
     console.log(data);
+  };
+
+  handlePageChange = (e, value) => {
+    this.setState({ currentPage: value });
   };
 
   getProductsData = () => {
@@ -91,6 +98,8 @@ class ProductProvider extends Component {
       searchQuery,
       selectedCategory,
       priceValue,
+      currentPage,
+      pageSize,
     } = this.state;
     let filtered = allProducts;
 
@@ -108,11 +117,13 @@ class ProductProvider extends Component {
       );
     }
 
-    return { filtered };
+    const products = paginate(filtered, currentPage, pageSize);
+
+    return { filtered: products, totalCount: filtered.length };
   };
 
   render() {
-    const { filtered } = this.getProductsData();
+    const { filtered, totalCount } = this.getProductsData();
     return (
       <ProductContext.Provider
         value={{
@@ -122,6 +133,8 @@ class ProductProvider extends Component {
           handleSearch: this.handleSearch,
           onCategorySelect: this.handleCategorySelect,
           onPriceChange: this.handlePriceChange,
+          onPageChange: this.handlePageChange,
+          itemsCount: totalCount,
         }}
       >
         {this.props.children}

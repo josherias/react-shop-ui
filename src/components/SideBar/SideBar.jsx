@@ -8,9 +8,12 @@ const Wrapper = styled.div`
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
     rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-  flex: 1;
-  margin-right: 15px;
+  /* margin-right: 15px; */
   max-height: 450px;
+
+  @media ${device.tablet} {
+    max-height: 500px;
+  }
 
   @media ${device.mobile} {
     margin-right: 0px;

@@ -27,8 +27,6 @@ function SortComponent() {
             <em>None</em>
           </MenuItem>
           <MenuItem value={10}>Price</MenuItem>
-          <MenuItem value={21}>Name</MenuItem>
-          <MenuItem value={22}>Old price</MenuItem>
         </Select>
       </FormControl>
     </div>
