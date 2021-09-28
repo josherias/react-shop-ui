@@ -91,7 +91,16 @@ const QtyLabel = styled.span`
   margin: 0px 3px;
 `;
 
-function CartItem({ img, title, price, oldPrice }) {
+function CartItem({
+  img,
+  title,
+  price,
+  oldPrice,
+  id,
+  count,
+  onIncrement,
+  onDecrement,
+}) {
   return (
     <Wrapper>
       <Grid container spacing={{ xs: 1, md: 1 }}>
@@ -104,9 +113,9 @@ function CartItem({ img, title, price, oldPrice }) {
             <NewPrice>${price}</NewPrice>
             <OldPrice>${oldPrice}</OldPrice>
             <QuantityBtns>
-              <QtyButton>+</QtyButton>
-              <QtyLabel>1</QtyLabel>
-              <QtyButton>-</QtyButton>
+              <QtyButton onClick={() => onIncrement(id)}>+</QtyButton>
+              <QtyLabel>{count}</QtyLabel>
+              <QtyButton onClick={() => onDecrement(id)}>-</QtyButton>
             </QuantityBtns>
           </Details>
         </Grid>

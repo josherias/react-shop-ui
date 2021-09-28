@@ -83,6 +83,7 @@ function NewProductSlider() {
             id={product.id}
             price={product.price}
             oldPrice={product.oldPrice}
+            inCart={product.inCart}
           />
         ))}
       </SliderComponent>

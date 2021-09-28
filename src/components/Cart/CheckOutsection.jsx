@@ -84,21 +84,21 @@ const CheckOutButton = styled.button`
   }
 `;
 
-function CheckOutsection() {
+function CheckOutsection({ subTotal, shipCharges, total }) {
   return (
     <Wrapper>
       <Heading>CHECKOUT SECTION</Heading>
       <Details>
         <Label>Subtotal</Label>
-        <Amount>$ &nbsp; 80</Amount>
+        <Amount>$ &nbsp; {subTotal}</Amount>
       </Details>
       <Details>
         <Label>Shipping Charges</Label>
-        <Amount>$ &nbsp; 15</Amount>
+        <Amount>$ &nbsp; {shipCharges}</Amount>
       </Details>
       <Details>
         <TotalLabel>Total</TotalLabel>
-        <TotalAmount>$ &nbsp; 80</TotalAmount>
+        <TotalAmount>$ &nbsp; {total}</TotalAmount>
       </Details>
       <CheckOutButton>Checkout</CheckOutButton>
     </Wrapper>

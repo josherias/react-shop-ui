@@ -104,10 +104,22 @@ const CartBtn = styled.button`
   width: 100%;
 `;
 
+const InCartBtn = styled.button`
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  background-color: #9e9b9a;
+  color: white;
+  font-weight: 600;
+  border: none;
+  width: 100%;
+`;
+
 function Product() {
   const context = useContext(ProductContext);
 
-  const { title, img, price, discountPrice } = context.singleProduct;
+  const { title, img, price, discountPrice, inCart } = context.singleProduct;
 
   return (
     <Container>
@@ -151,7 +163,11 @@ function Product() {
                   eligendi at adipisci inventore sequi dolorum. Debitis, magni
                   minima?
                 </Description>
-                <CartBtn>ADD TO CART </CartBtn>
+                {inCart ? (
+                  <InCartBtn disabled>In Cart </InCartBtn>
+                ) : (
+                  <CartBtn>ADD TO CART </CartBtn>
+                )}
               </Right>
             </Grid>
           </Grid>

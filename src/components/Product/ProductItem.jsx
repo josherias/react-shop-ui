@@ -122,38 +122,52 @@ const CartIcon = styled.span`
   }
 `;
 
-function ProductItem({ img, title, id, price, oldPrice }) {
+const InCartLabel = styled.span`
+  /* color: #afaeac; */
+  color: #f0540c;
+  position: absolute;
+  bottom: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  right: 10px;
+`;
+
+function ProductItem({ img, title, id, price, oldPrice, inCart }) {
   const context = useContext(ProductContext);
 
-  const { handleDetail } = context;
+  const { handleDetail, onAddToCart } = context;
 
   return (
-    <Link
-      to={"/product/" + title}
-      style={{ textDecoration: "none" }}
-      onClick={() => handleDetail(id)}
-    >
-      <Wrapper>
+    <Wrapper>
+      <Link
+        to={"/product/" + title}
+        style={{ textDecoration: "none" }}
+        onClick={() => handleDetail(id)}
+      >
         <ImgContainer>
           <Img src={img} />
         </ImgContainer>
-        <Details>
-          <StockLabel>Available (In Stock)</StockLabel>
-          <Title>{title}</Title>
-          <PriceGroup>
-            <NewPrice>${price}</NewPrice>
-            <OldPrice>${oldPrice}</OldPrice>
-          </PriceGroup>
-        </Details>
-        <OfferLabel>6% OFF</OfferLabel>
-        <WishListIcon>
-          <FavoriteBorder />
-        </WishListIcon>
-        <CartIcon>
+      </Link>
+      <Details>
+        <StockLabel>Available (In Stock)</StockLabel>
+        <Title>{title}</Title>
+        <PriceGroup>
+          <NewPrice>${price}</NewPrice>
+          <OldPrice>${oldPrice}</OldPrice>
+        </PriceGroup>
+      </Details>
+      <OfferLabel>6% OFF</OfferLabel>
+      <WishListIcon>
+        <FavoriteBorder />
+      </WishListIcon>
+      {inCart ? (
+        <InCartLabel>In Cart</InCartLabel>
+      ) : (
+        <CartIcon onClick={() => onAddToCart(id)}>
           <AddShoppingCart />
         </CartIcon>
-      </Wrapper>
-    </Link>
+      )}
+    </Wrapper>
   );
 }
 

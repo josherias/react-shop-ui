@@ -9,6 +9,9 @@ export const detailProduct = {
   featured: true,
   description: "",
   category: 1,
+  inCart: false,
+  total: 0,
+  count: 1,
 };
 
 export const products = [
@@ -21,6 +24,9 @@ export const products = [
     featured: true,
     description: "",
     category_id: 1,
+    inCart: false,
+    total: 0,
+    count: 1,
   },
 
   {
@@ -32,6 +38,9 @@ export const products = [
     featured: true,
     description: "",
     category_id: 4,
+    inCart: false,
+    total: 0,
+    count: 1,
   },
   {
     id: 3,
@@ -42,6 +51,9 @@ export const products = [
     featured: true,
     description: "",
     category_id: 8,
+    inCart: false,
+    total: 0,
+    count: 1,
   },
 
   {
@@ -53,6 +65,9 @@ export const products = [
     featured: true,
     description: "",
     category_id: 2,
+    inCart: false,
+    total: 0,
+    count: 1,
   },
   {
     id: 5,
@@ -63,6 +78,9 @@ export const products = [
     featured: true,
     description: "",
     category_id: 1,
+    inCart: false,
+    total: 0,
+    count: 1,
   },
   {
     id: 6,
@@ -73,6 +91,9 @@ export const products = [
     featured: true,
     description: "",
     category_id: 3,
+    inCart: false,
+    total: 0,
+    count: 1,
   },
   {
     id: 7,
@@ -83,6 +104,9 @@ export const products = [
     featured: true,
     description: "",
     category_id: 4,
+    inCart: false,
+    total: 0,
+    count: 1,
   },
   {
     id: 8,
@@ -93,6 +117,9 @@ export const products = [
     featured: true,
     description: "",
     category_id: 3,
+    inCart: false,
+    total: 0,
+    count: 1,
   },
 ];
 
@@ -224,39 +251,7 @@ export const singleAdd = {
   img: `${addsImgSrc}single-add.jpg`,
 };
 
-const cart = [
-  {
-    id: 1,
-    title: "Cabage Vegetable",
-    img: `${pdtImgSrc}img-1.jpg`,
-    price: 97,
-    oldPrice: 99,
-    featured: true,
-    description: "",
-    category_id: 1,
-  },
-
-  {
-    id: 2,
-    title: "Straw berry fruit",
-    img: `${pdtImgSrc}img-2.jpg`,
-    price: 45,
-    oldPrice: 50,
-    featured: true,
-    description: "",
-    category_id: 1,
-  },
-  {
-    id: 3,
-    title: "Passion fruit",
-    img: `${pdtImgSrc}img-3.jpg`,
-    price: 12,
-    oldPrice: 16,
-    featured: true,
-    description: "",
-    category: 1,
-  },
-];
+const cart = [];
 
 export function getCart() {
   return cart;

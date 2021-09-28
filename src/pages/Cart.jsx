@@ -116,7 +116,16 @@ const CartSection = styled.div`
 
 function Cart() {
   const context = useContext(ProductContext);
-  const { cart } = context;
+  const {
+    cart,
+    cartCount,
+    cartSubTotal,
+    cartShipCharges,
+    cartTotal,
+    onIncrement,
+    onDecrement,
+  } = context;
+
   return (
     <Container>
       <Wrapper>
@@ -124,7 +133,7 @@ function Cart() {
           <Row1>My Cart</Row1>
           <Row2>
             <Button>Continue shopping</Button>
-            <CartCount>You have (2) Items in you Cart</CartCount>
+            <CartCount>You have ({cartCount}) Items in you Cart</CartCount>
             <CheckOutButton>Checkout now</CheckOutButton>
           </Row2>
         </TopSection>
@@ -138,11 +147,19 @@ function Cart() {
                   key={item.id}
                   price={item.price}
                   oldPrice={item.oldPrice}
+                  id={item.id}
+                  count={item.count}
+                  onIncrement={onIncrement}
+                  onDecrement={onDecrement}
                 />
               ))}
             </Grid>
             <Grid item xs={12} sm={4} md={4}>
-              <CheckOutsection />
+              <CheckOutsection
+                subTotal={cartSubTotal}
+                shipCharges={cartShipCharges}
+                total={cartTotal}
+              />
             </Grid>
           </Grid>
         </CartSection>

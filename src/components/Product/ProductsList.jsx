@@ -70,6 +70,7 @@ function ProductsList({ loading, productsData, searchQuery, handleSearch }) {
                     id={product.id}
                     price={product.price}
                     oldPrice={product.oldPrice}
+                    inCart={product.inCart}
                   />
                 </Grid>
               ))

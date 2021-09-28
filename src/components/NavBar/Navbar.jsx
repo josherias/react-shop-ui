@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { device } from "../../responsive";
 import MenuOutlinedIcon from "@material-ui/icons/MenuOutlined";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import { Badge } from "@material-ui/core";
 import { Link, NavLink } from "react-router-dom";
+import { ProductContext } from "../../context";
 
 const Wrapper = styled.div`
   display: flex;
@@ -112,6 +113,10 @@ const Toggler = styled.div`
 function Navbar() {
   const [toggle, setToggle] = useState(false);
 
+  const context = useContext(ProductContext);
+
+  const { cartCount } = context;
+
   return (
     <Wrapper>
       <Left>
@@ -142,7 +147,7 @@ function Navbar() {
         <NavItem>
           <NavBarLink>
             <NavItemLink to="/cart">
-              <Badge badgeContent={4} color="primary">
+              <Badge badgeContent={cartCount} color="primary">
                 <ShoppingCartOutlinedIcon />
               </Badge>
             </NavItemLink>
