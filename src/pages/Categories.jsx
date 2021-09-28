@@ -43,7 +43,7 @@ const TopSection = styled.div`
 `;
 const Heading = styled.h1`
   font-size: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   text-transform: uppercase;
   flex: 1;
 `;
@@ -62,7 +62,6 @@ function Categories() {
       <Wrapper>
         <TopSection>
           <Heading>All Categories</Heading>
-          <SearchComponent />
         </TopSection>
         {loading ? (
           <Loading />
